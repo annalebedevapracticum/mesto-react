@@ -1,6 +1,6 @@
 import { request } from "./helpers";
 
-export class Api {
+class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
@@ -79,6 +79,8 @@ export class Api {
 
   }
 }
+
+export default Api;
 
 export const apiInstance = new Api({
   baseUrl: 'https://nomoreparties.co/v1/cohort-50',
