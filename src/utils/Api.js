@@ -1,6 +1,6 @@
 import { request } from "./helpers";
 
-class Api {
+export class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
@@ -80,7 +80,7 @@ class Api {
   }
 }
 
-export const api = new Api({
+export const apiInstance = new Api({
   baseUrl: 'https://nomoreparties.co/v1/cohort-50',
   updateUrl: 'https://mesto.nomoreparties.co/v1/cohort-50',
   headers: {

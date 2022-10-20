@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { api } from "../utils/api";
+import { apiInstance } from "../utils/api";
 import editbutton from '../images/editbutton.svg';
 import vector2 from '../images/Vector2.svg';
 import Card from "./Card";
@@ -15,7 +15,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, setSelectedCard }) {
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        Promise.all([api.getUserInfo(), api.getCardsInfo()]).then(([{ name, about, _id, avatar }, data]) => {
+        Promise.all([apiInstance.getUserInfo(), apiInstance.getCardsInfo()]).then(([{ name, about, _id, avatar }, data]) => {
             setUserName(name);
             setUserDescription(about);
             setUserAvatar(avatar);
