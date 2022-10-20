@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apiInstance } from "../utils/api";
+import { apiInstance } from "../utils/Api";
 import editbutton from '../images/editbutton.svg';
 import vector2 from '../images/Vector2.svg';
 import Card from "./Card";

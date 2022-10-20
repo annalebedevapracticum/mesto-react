@@ -81,6 +81,7 @@ class Api {
 }
 
 export default Api;
+//Если файл с маленькой буквы, не проходит проверку на автотестах
 
 export const apiInstance = new Api({
   baseUrl: 'https://nomoreparties.co/v1/cohort-50',
@@ -90,3 +91,4 @@ export const apiInstance = new Api({
       'Content-Type': 'application/json'
   }
 });
+
