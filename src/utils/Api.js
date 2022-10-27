@@ -67,6 +67,15 @@ class Api {
     })
 
   }
+
+  changeLikeCardStatus = (cardId, isLiked) => {
+    if (isLiked) {
+      return this.deleteCardLike(cardId);
+    } else {
+      return this.likeCard(cardId);
+    }
+  }
+
   updateAvatar = (avatar) => {
     return request(`${this._updateUrl}/users/me/avatar`, {
       method: 'PATCH',
@@ -87,8 +96,8 @@ export const apiInstance = new Api({
   baseUrl: 'https://nomoreparties.co/v1/cohort-50',
   updateUrl: 'https://mesto.nomoreparties.co/v1/cohort-50',
   headers: {
-      authorization: 'b4e2c2b5-478c-44a2-8411-ea93c0b3b5ee',
-      'Content-Type': 'application/json'
+    authorization: 'b4e2c2b5-478c-44a2-8411-ea93c0b3b5ee',
+    'Content-Type': 'application/json'
   }
 });
 
