@@ -19,8 +19,7 @@ function App() {
   const [cardForDelete, setCardForDelete] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [isDeleteLoading, setDeleteLoading] = useState(false);
-
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     apiInstance.getUserInfo().then(setCurrentUser)
@@ -74,11 +73,11 @@ function App() {
 
   const handleConfirmationSubmit = (e) => {
     e.preventDefault();
-    setDeleteLoading(true);
+    setLoading(true);
     handleCardDelete(cardForDelete).then(() => {
       closeAllPopups();
       setCardForDelete(null);
-      setDeleteLoading(false);
+      setLoading(false);
     });
   }
 
@@ -109,7 +108,9 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={{
-      currentUser
+      currentUser,
+      loading,
+      setLoading
     }}>
       <div className="wrapper">
         <div className="page">
@@ -127,7 +128,7 @@ function App() {
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
           <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} />
           <ImagePopup isOpen={!!selectedCard} onClose={closeAllPopups} selectedCard={selectedCard} />
-          <PopupWithForm name='confirmation' title='Вы уверены?' isOpen={isConfirmationPopupOpen} onClose={closeAllPopups} submitText="Да" onSubmit={handleConfirmationSubmit} isLoading={isDeleteLoading}/>
+          <PopupWithForm name='confirmation' title='Вы уверены?' isOpen={isConfirmationPopupOpen} onClose={closeAllPopups} submitText="Да" onSubmit={handleConfirmationSubmit} isLoading={loading}/>
 
           <Footer />
         </div>

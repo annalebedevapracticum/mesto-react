@@ -1,11 +1,12 @@
 import React from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import PopupWithForm from "./PopupWithForm";
 
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
     const [name, setName] = React.useState('');
     const [link, setLink] = React.useState('');
-    const [loading, setLoading] = React.useState(false);
+    const { loading, setLoading } = React.useContext(CurrentUserContext);
 
     function handleNameChange(e) {
         setName(e.target.value);
@@ -20,10 +21,17 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         onAddPlace({
             name,
             link
-        }).then(() => {
+        }).finally(() => {
             setLoading(false);
         });
     }
+
+    React.useEffect(() => {
+        setName('');
+        setLink('')
+    }, [isOpen]);
+
+
 
     return (
         <PopupWithForm name='add-card' title='Новое место' className='add-form' isOpen={isOpen} onClose={onClose} submitText="Создать" onSubmit={handleSubmit} isLoading={loading}>
