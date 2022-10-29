@@ -19,8 +19,6 @@ class Api {
       method: 'GET',
       headers: this._headers
     })
-
-
   }
 
   updateProfileInfo(name, about) {
@@ -32,9 +30,8 @@ class Api {
         about: about
       })
     })
-
-
   }
+
   addCard(name, link) {
     return request(`${this._updateUrl}/cards`, {
       method: 'POST',
@@ -44,28 +41,27 @@ class Api {
         link: link
       })
     })
-
   }
+
   removeCard(cardId) {
     return request(`${this._updateUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
     })
-
   }
+
   likeCard = (cardId) => {
     return request(`${this._updateUrl}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this._headers,
     })
-
   }
+
   deleteCardLike = (cardId) => {
     return request(`${this._updateUrl}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this._headers,
     })
-
   }
 
   changeLikeCardStatus = (cardId, isLiked) => {
@@ -82,10 +78,8 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         avatar,
-
       })
     })
-
   }
 }
 

@@ -20,7 +20,6 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     inputRef.current.value = currentUser.avatar;
   }, [isOpen]);
 
-
   return (
     <PopupWithForm onSubmit={handleSubmit} name='avatar' title='Обновить ававтар' className='avatar-form' isOpen={isOpen} onClose={onClose} submitText="Сохранить" isLoading={loading}>
       <input ref={inputRef} name="avatar" type="url" id="popup__avatar-link" className="popup__inputs" required
